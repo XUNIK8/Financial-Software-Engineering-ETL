@@ -1,0 +1,37 @@
+2022-12-21 21:20:45,743 - 
+2022-12-21 21:20:45,744 - Entering EtlData utility
+2022-12-21 21:20:45,747 - Entering run_extraction(args, config)
+2022-12-21 21:20:45,747 -      Entering read_feature(config)
+2022-12-21 21:20:45,933 - Hanjia Xu records <26054> were read from <C:\Users\DELL\Desktop\Course\6861\fall2022py\data\hanjiaxu_extraction_input.csv>
+2022-12-21 21:20:45,934 -           Entering apply_dtype_feature(df, config)
+2022-12-21 21:20:45,952 -           Leaving apply_dtype_feature(df, config)
+2022-12-21 21:20:45,953 -      Leaving read_feature(config)
+2022-12-21 21:20:45,953 -      Entering mapping_feature(df, config)
+2022-12-21 21:20:45,953 -           Entering read_feature(config)
+2022-12-21 21:21:00,853 - Hanjia Xu records <307511> were read from <C:\Users\DELL\Desktop\Course\6861\fall2022py\data\hanjiaxu_extraction_mapping.xlsx>
+2022-12-21 21:21:00,854 -                Entering apply_dtype_feature(df, config)
+2022-12-21 21:21:01,273 -                Leaving apply_dtype_feature(df, config)
+2022-12-21 21:21:01,273 -           Leaving read_feature(config)
+2022-12-21 21:21:01,444 -      Leaving mapping_feature(df, config)
+2022-12-21 21:21:01,445 -      Entering rearrange_feature(df_target, config)
+2022-12-21 21:21:01,449 -      Leaving rearrange_feature(df_target, config)
+2022-12-21 21:21:01,451 -      Entering write_feature(df_target, config)
+2022-12-21 21:21:01,809 -      Leaving write_feature(df_target, config)
+2022-12-21 21:21:01,810 - Leaving run_extraction(args, config)
+2022-12-21 21:21:01,820 - Leaving EtlData utility
+2022-12-21 21:21:14,798 - 
+2022-12-21 21:21:14,798 - Entering EtlData utility
+2022-12-21 21:21:14,799 - Entering run_transformation(args, config)
+2022-12-21 21:21:14,799 -      Entering read_feature(config)
+2022-12-21 21:21:14,883 - Hanjia Xu records <26054> were read from <C:\Users\DELL\Desktop\Course\6861\fall2022py\data\hanjiaxu_extraction_output.csv>
+2022-12-21 21:21:14,883 -           Entering apply_dtype_feature(df, config)
+2022-12-21 21:21:14,911 -           Leaving apply_dtype_feature(df, config)
+2022-12-21 21:21:14,912 -      Leaving read_feature(config)
+2022-12-21 21:21:14,912 -      Entering aggregate_feature(df_target, config)
+2022-12-21 21:21:14,928 -      Leaving aggregate_feature(df_target, config)
+2022-12-21 21:21:14,929 -      Entering rearrange_feature(df_target, config)
+2022-12-21 21:21:14,930 -      Leaving rearrange_feature(df_target, config)
+2022-12-21 21:21:14,930 -      Entering write_feature(df_target, config)
+2022-12-21 21:21:14,933 -      Leaving write_feature(df_target, config)
+2022-12-21 21:21:14,933 - Leaving run_transformation(args, config)
+2022-12-21 21:21:14,933 - Leaving EtlData utility

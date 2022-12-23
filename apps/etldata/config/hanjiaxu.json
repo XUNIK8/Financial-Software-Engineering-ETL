@@ -1,0 +1,118 @@
+{
+    "feature_args": {
+        "-input": {
+            "dest": "input_path",
+            "help": "Input data path",
+            "required": "True"
+        },
+        "-output": {
+            "dest": "output_path",
+            "help": "Output data path",
+            "required": "True"
+        },
+        "-mapping": {
+            "dest": "mapping_path",
+            "help": "Mapping data path",
+            "required": "True"
+        }
+    },
+    "extraction": {
+        "description": "Hanjia Xu",
+        "input": {
+            "read": {
+                "file_type": "csv",
+                "separator": ",",
+                "apply_dtype": {
+                    "SK_ID_CURR": "str"
+                },
+                "fill_nan": "False"
+            },
+            "plugin": null
+        },
+        "mapping": {
+            "read": {
+                "file_type": "excel",
+                "skip_rows": 0,
+                "sheet_name": 0,
+                "apply_dtype": {
+                    "ID": "str",
+                    "TARGET": "str"
+                }
+            },
+            "left_on": [
+                "SK_ID_CURR"
+            ],
+            "right_on": [
+                "ID"
+            ],
+            "plugin": null
+        },
+        "output": {
+            "write": {
+                "file_type": "csv",
+                "separator": ",",
+                "mode": "overwrite"
+            },
+            "col_rename": {
+                "TARGET": "LABEL"
+            },
+            "assign_static": {
+                "TARGET_DESCRIPTION": "TARGET 1 MEANS DEFAULT"
+            },
+            "plugin": null
+        }
+    },
+    "transformation": {
+        "description": "Hanjia Xu",
+        "input": {
+            "read": {
+                "file_type": "csv",
+                "use_cols":[
+                    "SK_ID_CURR", "NAME_CONTRACT_TYPE", "AMT_INCOME_TOTAL",
+                    "AMT_CREDIT", "AMT_ANNUITY", "AMT_GOODS_PRICE", "LABEL"
+                ],
+                "apply_dtype": {
+                    "SK_ID_CURR": "str"
+                },
+                "fill_nan": "True"
+            },
+            "plugin": null
+        },
+        "aggregate": {
+            "type": "pivot",
+            "aggfunc": "np.mean",
+            "groupby_col": [
+                "NAME_CONTRACT_TYPE"
+            ],
+            "values": [
+                "AMT_INCOME_TOTAL", "AMT_CREDIT", 
+                "AMT_ANNUITY", "AMT_GOODS_PRICE"
+            ],
+            "index": [
+                "NAME_CONTRACT_TYPE"
+            ],
+            "columns": [
+                "LABEL"
+            ]
+        },
+        "output": {
+            "write": {
+                "file_type": "csv",
+                "separator": ",",
+                "mode": "overwrite"
+            },
+            "col_rename": {
+                "NAME_CONTRACT_TYPE": "CONTRACT_TYPE",
+                "AMT_INCOME_TOTAL": "AVG_INCOME",
+                "AMT_CREDIT": "AVG_CREDIT",
+                "AMT_ANNUITY": "AVG_ANNUITY",
+                "AMT_GOODS_PRICE": "AVG_GOODS_PRICE"
+            },
+            "assign_static": {
+                "PROCESS": "TRANSFORMATION",
+                "EDITOR": "HANJIA"
+            },
+            "plugin": null
+        }
+    }
+}
